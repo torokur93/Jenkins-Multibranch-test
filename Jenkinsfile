@@ -23,7 +23,7 @@ pipeline {
                 """
 
                 sh """
-                echo "Deploying Code dev"
+                cp * /var/www/html/dev/
                 """
             }
         }
@@ -38,7 +38,7 @@ pipeline {
                 """
 
                 sh """
-                echo "Deploying Code prod"
+                cp * /var/www/html/prod/
                 """
             }
         }
