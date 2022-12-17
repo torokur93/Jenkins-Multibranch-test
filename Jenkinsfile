@@ -26,6 +26,19 @@ pipeline {
             }
         }
 
+        stage('Code Checkout Production') {
+            when {
+                branch 'master'
+            }
+            steps {
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: '*/master']], 
+                    userRemoteConfigs: [[url: 'https://github.com/torokur93/Jenkins-Multibranch-test.git']]
+                ])
+            }
+        }
+
 
         stage('Build Deploy Code Developement') {
             when {
@@ -34,12 +47,6 @@ pipeline {
             steps {
                 sh """
                 echo "Building Artifact"
-                """
-                sh """
-                whoami
-                """
-                sh """
-                groups
                 """
 
                 sh """
