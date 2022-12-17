@@ -35,6 +35,12 @@ pipeline {
                 sh """
                 echo "Building Artifact"
                 """
+                sh """
+                whoami
+                """
+                sh """
+                groups
+                """
 
                 sh """
                 cp -R ${WORKSPACE}/* /var/www/html/dev/
