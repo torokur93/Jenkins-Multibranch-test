@@ -23,7 +23,7 @@ pipeline {
                 """
 
                 sh """
-                cp * /var/www/html/dev/
+                cp -R ${WORKSPACE}/* /var/www/html/dev/
                 """
             }
         }
@@ -38,7 +38,7 @@ pipeline {
                 """
 
                 sh """
-                cp * /var/www/html/prod/
+                cp -R ${WORKSPACE}/* /var/www/html/prod/
                 """
             }
         }
