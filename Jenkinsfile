@@ -13,6 +13,20 @@ pipeline {
             }
         }
 
+        stage('Code Checkout Developement') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: '*/develop']], 
+                    userRemoteConfigs: [[url: 'https://github.com/torokur93/Jenkins-Multibranch-test.git']]
+                ])
+            }
+        }
+
+
         stage('Build Deploy Code Developement') {
             when {
                 branch 'develop'
