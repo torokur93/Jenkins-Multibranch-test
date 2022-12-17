@@ -13,33 +13,7 @@ pipeline {
             }
         }
 
-        stage('Code Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
-            }
-        }
-
-        stage(' Unit Testing') {
-            steps {
-                sh """
-                echo "Running Unit Tests"
-                """
-            }
-        }
-
-        stage('Code Analysis') {
-            steps {
-                sh """
-                echo "Running Code Analysis"
-                """
-            }
-        }
-
-        stage('Build Deploy Code') {
+        stage('Build Deploy Code Developement') {
             when {
                 branch 'develop'
             }
@@ -52,7 +26,9 @@ pipeline {
                 echo "Deploying Code dev"
                 """
             }
+        }
 
+        stage('Build Deploy Code Production') {
             when {
                 branch 'master'
             }
